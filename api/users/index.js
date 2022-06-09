@@ -25,9 +25,7 @@ export default async function handler(request, response) {
 		// return response.status(200).json({data: updatedUser});
 
 		const newUser = new User({
-			name: 'Paula',
-			email: 'paula@google.com',
-			age: 24,
+			...request.body,
 		});
 		await newUser.save();
 		return response.status(201).json({data: newUser});
