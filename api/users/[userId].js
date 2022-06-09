@@ -4,7 +4,7 @@ import User from '../../backend/models/User';
 export default async function handler(request, response) {
 	await connectToMongodb();
 	const {userId} = request.query;
-	// TODO: Check for request methods GET and DELETE and handle them!
+
 	if (request.method === 'GET') {
 		const users = await User.findById(userId);
 		return response.status(200).json({data: users});
