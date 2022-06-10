@@ -1,11 +1,13 @@
 import React from 'react';
 
+import {UserContainer, ButtonStyle} from './UserStyle';
+
 export default function User({user}) {
 	const name = 'Bob';
 	return (
-		<section>
+		<UserContainer>
 			<h2>{user.name}</h2>
-			<button type="button">Details</button>
-		</section>
+			<ButtonStyle type="button">Details</ButtonStyle>
+		</UserContainer>
 	);
 }

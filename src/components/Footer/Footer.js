@@ -1,16 +1,18 @@
 import React from 'react';
-import {NavLink, useLocation} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
+
+import {FooterContainer, FooterLink} from './FooterStyle';
 
 export default function Footer() {
 	const location = useLocation();
 	return (
-		<section>
-			<NavLink to="/" active={(location.pathname === '/').toString()}>
+		<FooterContainer>
+			<FooterLink to="/" active={(location.pathname === '/').toString()}>
 				Home
-			</NavLink>
-			<NavLink to="/" active={(location.pathname === '/create').toString()}>
+			</FooterLink>
+			<FooterLink to="/create" active={(location.pathname === '/create').toString()}>
 				Create
-			</NavLink>
-		</section>
+			</FooterLink>
+		</FooterContainer>
 	);
 }

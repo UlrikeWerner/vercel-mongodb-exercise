@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {HeaderTitle} from './HeaderStyle.js';
+
 export default function Header({title}) {
-	return <h1>{title}</h1>;
+	return <HeaderTitle>{title}</HeaderTitle>;
 }

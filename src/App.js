@@ -15,6 +15,8 @@ export default function App() {
 				<Route />
 				<Route path="/create" element={<Create title="Create" />} />
 				<Route />
+				<Route path="/Detail/[userId]" element={<Create title="Detail" />} />
+				<Route />
 			</Routes>
 			<Footer />
 		</>

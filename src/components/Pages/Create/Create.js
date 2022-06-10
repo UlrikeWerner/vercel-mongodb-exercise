@@ -1,5 +1,13 @@
 import React from 'react';
 
-export default function Home() {
-	return <h2>Create</h2>;
+import Form from '../../Form/Form.js';
+import Header from '../../Header/Header.js';
+
+export default function Create({title}) {
+	return (
+		<section>
+			<Header title={title} />
+			<Form />
+		</section>
+	);
 }
