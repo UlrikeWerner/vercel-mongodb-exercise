@@ -1,14 +1,14 @@
-import Exercise1 from './components/Exercise1';
-import Exercise2 from './components/Exercise2';
-import Exercise3 from './components/Exercise3';
-import Exercise4 from './components/Exercise4';
+import React from 'react';
+import {Routes, Route} from 'react-router-dom';
 import {GlobalStyle} from './styles';
+
+import Home from './components/Home/Home.js';
 
 export default function App() {
 	return (
 		<>
 			<GlobalStyle />
-			<div>
+			{/*<div>
 				<Exercise1 />
 				<hr />
 				<Exercise2 />
@@ -16,7 +16,11 @@ export default function App() {
 				<Exercise3 />
 				<hr />
 				<Exercise4 />
-			</div>
+			</div>*/}
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route />
+			</Routes>
 		</>
 	);
 }
