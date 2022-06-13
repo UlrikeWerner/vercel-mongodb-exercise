@@ -1,6 +1,13 @@
 import React from 'react';
 import {useState} from 'react';
 
+import {
+	FormContainer,
+	FormInputText,
+	FormInputSubmit,
+	FormLabel,
+	FormInputNumber,
+} from './FormStyle.js';
 export default function Form() {
 	const [newName, setNewName] = useState('');
 	const [newEmail, setNewEmail] = useState('');
@@ -40,7 +47,7 @@ export default function Form() {
 
 	return (
 		<section>
-			<form
+			<FormContainer
 				onSubmit={event => {
 					event.preventDefault();
 					setText(newName);
@@ -54,8 +61,8 @@ export default function Form() {
 					setNewAge('');
 				}}
 			>
-				<label htmlFor="input-name">Name: </label>
-				<input
+				<FormLabel htmlFor="input-name">Name: </FormLabel>
+				<FormInputText
 					required
 					id="inpute-Name"
 					type="text"
@@ -64,8 +71,8 @@ export default function Form() {
 						setNewName(event.target.value);
 					}}
 				/>
-				<label htmlFor="input-email">Email: </label>
-				<input
+				<FormLabel htmlFor="input-email">Email: </FormLabel>
+				<FormInputText
 					required
 					id="inpute-email"
 					type="text"
@@ -74,8 +81,8 @@ export default function Form() {
 						setNewEmail(event.target.value);
 					}}
 				/>
-				<label htmlFor="input-age">Age: </label>
-				<input
+				<FormLabel htmlFor="input-age">Age: </FormLabel>
+				<FormInputNumber
 					required
 					id="inpute-age"
 					type="number"
@@ -84,8 +91,8 @@ export default function Form() {
 						setNewAge(event.target.value);
 					}}
 				/>
-				<input type="submit" value="create user" />
-			</form>
+				<FormInputSubmit type="submit" value="create user" />
+			</FormContainer>
 			{text === '' ? '' : <p>The new User: {text} was added!</p>}
 		</section>
 	);
