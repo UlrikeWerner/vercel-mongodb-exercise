@@ -4,17 +4,51 @@ import {useState} from 'react';
 export default function Form() {
 	const [newName, setNewName] = useState('');
 	const [newEmail, setNewEmail] = useState('');
-	const [newAge, setNewAge] = useState('');
-	const [text, setText] = useState([]);
+	const [newAge, setNewAge] = useState(Number);
+	const [text, setText] = useState('');
+
+	const [{data, error}, setData] = useState({data: [], error: null});
+
+	function fetchNewUserData(data) {
+		fetch('/api/users', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		})
+			.then(response => {
+				if (!response.ok) {
+					throw Error(response.statusText);
+				} else {
+					return response.json();
+				}
+			})
+			.then(data => {
+				setData({
+					data: data.data,
+					error: null,
+				});
+			})
+			.catch(error => {
+				setData({
+					data: [],
+					error: error.message,
+				});
+			});
+	}
 
 	return (
 		<section>
 			<form
 				onSubmit={event => {
 					event.preventDefault();
-					//addToDo to the DB
-					setText({Name: newName, Email: newEmail, Age: newAge});
-
+					setText(newName);
+					fetchNewUserData({
+						name: newName,
+						email: newEmail,
+						age: newAge,
+					});
 					setNewName('');
 					setNewEmail('');
 					setNewAge('');
@@ -45,16 +79,14 @@ export default function Form() {
 					required
 					id="inpute-age"
 					type="number"
-					value={newAge}
+					value={newAge === 0 ? '' : newAge}
 					onChange={event => {
-						setNewAge(event.target.value.toString());
+						setNewAge(event.target.value);
 					}}
 				/>
 				<input type="submit" value="create user" />
 			</form>
-			<p>
-				Name: {text.Name}, Email: {text.Email}, Age: {text.Age}
-			</p>
+			{text === '' ? '' : <p>The new User: {text} was added!</p>}
 		</section>
 	);
 }
