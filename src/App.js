@@ -1,22 +1,24 @@
-import Exercise1 from './components/Exercise1';
-import Exercise2 from './components/Exercise2';
-import Exercise3 from './components/Exercise3';
-import Exercise4 from './components/Exercise4';
+import React from 'react';
+import {Routes, Route} from 'react-router-dom';
+
+import Footer from './components/Footer/Footer.js';
+import Create from './components/Pages/Create/Create.js';
+import Home from './components/Pages/Home/Home.js';
 import {GlobalStyle} from './styles';
 
 export default function App() {
 	return (
 		<>
 			<GlobalStyle />
-			<div>
-				<Exercise1 />
-				<hr />
-				<Exercise2 />
-				<hr />
-				<Exercise3 />
-				<hr />
-				<Exercise4 />
-			</div>
+			<Routes>
+				<Route path="/" element={<Home title="Home" />} />
+				<Route />
+				<Route path="/create" element={<Create title="Create" />} />
+				<Route />
+				<Route path="/Detail/[userId]" element={<Create title="Detail" />} />
+				<Route />
+			</Routes>
+			<Footer />
 		</>
 	);
 }
